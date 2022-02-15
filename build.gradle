@@ -1,0 +1,19 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+/*Inserido para inclusão do AdsMob*/
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+/*Inserido para inclusão do AdsMob*/
+
+
+plugins {
+    id 'com.android.application' version '7.1.0' apply false
+    id 'com.android.library' version '7.1.0' apply false
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

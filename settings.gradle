@@ -1,0 +1,19 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        /*Inserido para inclusão do AdsMob*/
+        google()
+        mavenCentral()
+        maven { url 'https://jitpack.io'} //Não estou certo de que isso realmente era necessário
+        /*Inserido para inclusão do AdsMob*/
+    }
+}
+rootProject.name = "Testes"
+include ':app'
