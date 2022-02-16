@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="pack.testes">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Testes">
         <activity
+            android:name=".SecondActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -18,13 +22,10 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <!--Inserido para inclusão do AdsMob-->
+        </activity> <!-- Inserido para inclusão do AdsMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713"/>
-        <!--Quando for rodar de verdade, tem que alterar o android:value="ca-app-pub-################~$$$$$$$$$$"-->
-        <!--Inserido para inclusão do AdsMob-->
+            android:value="ca-app-pub-3940256099942544~3347511713" />
     </application>
 
 </manifest>

@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Testes</string>
-    <string name="mensagem_explicativa_ads">It works, you can place it anywhere, just need to be patience!</string>
 
     <!--Inserido para inclusão do AdsMob-->
-    <string name="ads_bannerteste">ca-app-pub-3940256099942544/6300978111</string>
-    <string name="ads_interstitialteste">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="ads_bannerteste" translatable="false">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="ads_interstitialteste" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="mensagem_explicativa_ads">To keep this app free to use we agreed that showing some Ads is good for all of us!</string>
     <!--Inserido para inclusão do AdsMob-->
 </resources>

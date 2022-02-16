@@ -1,20 +1,30 @@
 package pack.testes;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.initialization.InitializationStatus;
 import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 
 public class MainActivity extends AppCompatActivity {
 private AdRequest adRequest;
 private AdView adView;
-private int timer = 0;
+//private int timer = 0;
+private InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +38,7 @@ private int timer = 0;
         });
         /*Inserido para inclusão do AdsMob*/
 
-        Thread td = new Thread(new Runnable() {
+        /*Thread td = new Thread(new Runnable() {
             @Override
             public void run() {
                 for(timer = 0; timer<5; timer++){
@@ -45,8 +55,41 @@ private int timer = 0;
                 }
             }
         });
-        td.start();
+        td.start();*/
 
+        Button btn_secondActivity = findViewById(R.id.btn_Call);
+        btn_secondActivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AdRequest adRequest = new AdRequest.Builder().build();
+
+                InterstitialAd.load(MainActivity.this,"ca-app-pub-3940256099942544/1033173712", adRequest,
+                        new InterstitialAdLoadCallback() {
+                            @Override
+                            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                                // The mInterstitialAd reference will be null until
+                                // an ad is loaded.
+                                mInterstitialAd = interstitialAd;
+                                Log.i("Tag", "onAdLoaded");
+                            }
+
+                            @Override
+                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                // Handle the error
+                                Log.i("Tag", loadAdError.getMessage());
+                                mInterstitialAd = null;
+                            }
+                        });
+
+                if (mInterstitialAd != null) {
+                    mInterstitialAd.show(MainActivity.this);
+                } else {
+                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                }
+
+                startActivity(new Intent(MainActivity.this, SecondActivity.class));
+            }
+        });
 
         /*Inserido para inclusão do AdsMob*/
         adView = new AdView(MainActivity.this);
