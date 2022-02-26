@@ -6,45 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-        android:text="@string/mensagem_explicativa_ads"/>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="@string/mensagem_explicativa_ads" />
+
+        <Button
+            android:id="@+id/btn_Call"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textView"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="15dp"
+            android:text="Button" />-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="150sp"
+            android:text="What then?! How is it going to behave?"/>
+    </ScrollView>
+
+
+        <!--Inserido para inclusão do AdsMob-->
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/tv_bottonSpacer"
+            android:layout_centerHorizontal="true"
+            app:adSize="FULL_BANNER"
+            app:adUnitId="@string/ads_bannerteste"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bottonSpacer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--Inserido para inclusão do AdsMob-->
+
+        <TextView
+            android:id="@+id/tv_bottonSpacer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/mensagem_explicativa_ads"
+            android:textAlignment="center" />
     <Button
         android:id="@+id/btn_Call"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp"
-        android:text="Button"/>
-
-    <!--Inserido para inclusão do AdsMob-->
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tv_bottonSpacer"
-        android:layout_centerHorizontal="true"
-        app:adSize="FULL_BANNER"
-        app:adUnitId="@string/ads_bannerteste"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <!--Inserido para inclusão do AdsMob-->
-
-    <TextView
-        android:id="@+id/tv_bottonSpacer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/mensagem_explicativa_ads" />
+        android:text="Button" />
 
 </RelativeLayout>

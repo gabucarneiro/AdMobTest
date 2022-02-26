@@ -33,4 +33,13 @@
         android:text="SPACER"
         android:layout_below="@+id/adView"
         android:background="@color/black"/>
+
+    <Button
+        android:id="@+id/btnMostrarInterstitial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/adView"
+        android:layout_marginTop="100dp"
+        android:gravity="center"
+        android:text="Mostrar Interstitial"></Button>
 </RelativeLayout>

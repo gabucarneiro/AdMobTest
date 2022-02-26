@@ -24,6 +24,7 @@ private AdRequest adRequest;
 private AdView adView;
 //private int timer = 0;
 private InterstitialAd mInterstitialAd;
+int countClicks = 5; //Contador para apresentação do InterstitialAd
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,32 +62,41 @@ private InterstitialAd mInterstitialAd;
         btn_secondActivity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AdRequest adRequest = new AdRequest.Builder().build();
+                countClicks++;
 
-                InterstitialAd.load(MainActivity.this,"ca-app-pub-3940256099942544/1033173712", adRequest,
-                        new InterstitialAdLoadCallback() {
-                            @Override
-                            public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                                // The mInterstitialAd reference will be null until
-                                // an ad is loaded.
-                                mInterstitialAd = interstitialAd;
-                                Log.i("Tag", "onAdLoaded");
-                            }
+                //Verifica se o contador é maior ou igual a 5, true: apresenta o Interestitial e zera o contador; false: incrementa o contador
+                if(countClicks >= 5){
 
-                            @Override
-                            public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                                // Handle the error
-                                Log.i("Tag", loadAdError.getMessage());
-                                mInterstitialAd = null;
-                            }
-                        });
+                    AdRequest adRequest = new AdRequest.Builder().build();
 
-                if (mInterstitialAd != null) {
-                    mInterstitialAd.show(MainActivity.this);
-                } else {
-                    Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    InterstitialAd.load(MainActivity.this,"ca-app-pub-3940256099942544/1033173712", adRequest,
+                            new InterstitialAdLoadCallback() {
+                                @Override
+                                public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                                    // The mInterstitialAd reference will be null until
+                                    // an ad is loaded.
+                                    mInterstitialAd = interstitialAd;
+                                    Log.i("Tag", "onAdLoaded");
+                                }
+
+                                @Override
+                                public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                                    // Handle the error
+                                    Log.i("Tag", loadAdError.getMessage());
+                                    mInterstitialAd = null;
+                                }
+                            });
+
+                    if (mInterstitialAd != null) {
+                        mInterstitialAd.show(MainActivity.this);
+                    } else {
+                        Log.d("TAG", "The interstitial ad wasn't ready yet.");
+                    }
+
+
+
+                    countClicks = 0;
                 }
-
                 startActivity(new Intent(MainActivity.this, SecondActivity.class));
             }
         });
